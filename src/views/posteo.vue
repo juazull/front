@@ -2,13 +2,24 @@
 	<div class="container">
 		<div class="container mt-4">
 			<div class="row d-flex justify-content-center">
-				<div class="col-md-8">
+				<div class="col-md-8">				
 					<div class="card p-3 py-6">
 						<div class="d-flex flex-column ml-3">
-							<div class="pull-left image">
-<!-- 								<img src="../assets/img/juan.jpg" class="img-perfil" alt="Foto de Juan Manuel Zullo"> -->
+							<div class="card-header">
+								<img :src="this.posteo.imagen_usuario" alt="Foto de " width="35" align="left"/>
+								<h5 class="card-title" style="padding-left:50px; padding-top:5px">{{this.posteo.nombre_usuario}} {{this.posteo.apellido_usuario}}</h5>
 							</div>
-							<div class="d-flex flex-row post-title">
+							<div class="card-body">
+								<h1>{{this.posteo.titulo_posteo}}</h1>
+								<p>{{this.posteo.texto_posteo}}</p>
+								<div class="activity_list_footer">
+									<a href="#">Likes {{this.posteo.likes}}</a> <a href="#">Comentarios</a> <span>{{posteo.fecha}}</span>
+								</div>
+							</div>
+
+
+
+							<!--<div class="d-flex flex-row post-title">
 								<h1>{{this.posteo.titulo_posteo}}</h1>
 							</div>
 							<div class="post-description">
@@ -17,7 +28,7 @@
 								<div class="activity__list__footer">
 									<a href="#">Likes {{posteo.likes}}</a> <a href="#">Comentarios</a> <span>{{posteo.fecha}}</span>
 								</div>
-							</div>
+							</div>-->
 						</div>
 						<form action="#" class="panel-activity__status" @submit.prevent="crearComentario">
 							<div class="d-flex flex-row add-comment-section mt-4 mb-4">
