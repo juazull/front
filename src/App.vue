@@ -4,7 +4,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Abrir/cerrar menú de navegación">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar">
+       <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav" v-if="auth.user.id != null">
                 
                 <li class="nav-item">
@@ -80,6 +80,7 @@ export default {
                 email: null,
                 usuario: null,
             }
+            this.$router.push('/login');
         }
     },
 	mounted() {

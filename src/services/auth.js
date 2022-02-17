@@ -57,17 +57,17 @@ const authService = {
 	 *
 	 */
 	logout() {
-		return apiFetch('/logout.php', {
-			method: 'post',
-		}).then(res => {
-			userData = {
-				id: null,
-				usuario: null,
-				email: null,
-			};
-			localStorage.removeItem('userData');
-			return true;
-		});
+		return apiFetch("/cerrar-sesion", {
+      method: "post",
+    }).then((res) => {
+      userData = {
+        id: null,
+        usuario: null,
+        email: null,
+      };
+      localStorage.removeItem("userData");
+      return true;
+    });
 	}, 
 
 	/**

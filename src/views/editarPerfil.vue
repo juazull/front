@@ -11,12 +11,12 @@
 								<!-- 									<label class="sr-only">Usuario</label> <input v-model="perfil.perfil" type="text" id="usuario" class="form-control" name="name" placeholder="Usuario" required autofocus> -->
 								<!-- 								</div> -->
 								<div class="form-group">
-									<label class="sr-only">Nombre</label>
-									<input v-model="perfil.nombre_usuario" type="text" id="name" class="form-control" name="name" placeholder="Nombre">
+									<label for="name">Nombre:</label>
+									<input v-model="perfil.nombre_usuario" type="text" id="name" class="form-control" placeholder="Nombre">
 								</div>
 								<div class="form-group">
-									<label class="sr-only">Apellido</label>
-									<input v-model="perfil.apellido_usuario" type="text" id="lastname" class="form-control" name="lastname" placeholder="Apellido">
+									<label for="lastname">Apellido:</label>
+									<input v-model="perfil.apellido_usuario" type="text" id="lastname" class="form-control" placeholder="Apellido">
 								</div>
 <!-- 								<div class="form-group"> -->
 <!-- 									<label for="imagenPerfil" class="sr-only">Url de la imagen</label> -->
@@ -24,12 +24,12 @@
 <!-- 									<input type="hidden" id="fileName" class="form-control"> -->
 <!-- 								</div> -->
 								<div class="form-group">
-									<label class="sr-only">Edad</label>
+									<label for="edad">Edad</label>
 									<input v-model.number="perfil.edad_Usuario" type="number" min="1" id="edad" class="form-control">
 								</div>
 								<div class="form-group">
-									<label class="sr-only">Pais</label>
-									<select name="paises" id="paises" v-model="perfil.pais_usuario" class="form-control">
+									<label for="paises">Pais</label>
+									<select id="paises" v-model="perfil.pais_usuario" class="form-control">
 										<option v-for="pais in paises" :key="pais.id_pais" :value=pais.id_pais>{{pais.nombre_pais}}</option>
 									</select>
 								</div>

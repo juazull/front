@@ -12,13 +12,22 @@
 						<h1 class="panel-title2">Iniciar Sesion</h1>
 						<div>
 							<form action="#" method="POST" @submit.prevent="login">
+
+								<div v-if="showError">
+									<div class="alert alert-warning" role="alert">
+										<div v-for="error in errors">
+											{{ error }}
+										</div>                 
+									</div>
+								</div>
+
 								<div class="form-group">
-									<label class="sr-only">Email:</label>
-									<input v-model="user.usuario" type="text" name="usuario" class="form-control input_user" placeholder="email" />
+									<label for="email">Email:</label>
+									<input v-model="user.usuario" type="text" id="email" class="form-control input_user" placeholder="Email" />
 								</div>
 								<div class="form-group">
-									<label class="sr-only">Contraseña:</label>
-									<input v-model="user.password" type="password" name="password" class="form-control input_pass" placeholder="***********" />
+									<label for="password">Contraseña:</label>
+									<input v-model="user.password" type="password" id="password" class="form-control input_pass" placeholder="***********" />
 								</div>
 								<div class="form-group">
 									<button type="submit" class="btn btn-lg btn-verde btn-block">Ingresar</button>
@@ -46,20 +55,25 @@ export default {
         return {
             user: {
                 usuario: null,
-                password: null
+                password: null				
             },
             loading: false,
             notification: {
                 text: null,
                 type: 'success',
-            },
+            }, 
+			errors: [], 
+			showError: false
+			
         };
     },
 	methods: {
         login() {
             // TODO: Validar el form...
             this.loading = true;
-            authService
+			
+			if(!this.validates()){
+				authService
                 .login(this.user.usuario, this.user.password)
                 .then(response => {
                     this.loading = false;
@@ -67,10 +81,33 @@ export default {
                         this.$emit('logged', response);
 
 						this.$router.push('/perfil');
-                    }
+                    } else {
+						this.errors.push('Usuario no encontrado');
+						this.showError = true;
+					}
                 }
                 );
-        }
+			}
+            
+        },
+		
+		validates(){
+			this.errors=[];
+			this.showError= false;            
+            
+            if(this.user.usuario == null || this.user.usuario === '' ){
+                this.errors.push ('Por favor ingrese un email');
+                this.showError= true;
+                       
+            }
+
+			if(this.user.password == null || this.user.password === '' ){
+                this.errors.push ('Por favor ingrese una contraseña');
+                this.showError= true;                       
+            }
+			return this.showError
+
+		}
     }
 };
 </script>

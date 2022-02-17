@@ -11,7 +11,7 @@ const usuarios = {
 				password_usuario: password_usuario
 			})
 		})
-			.then(data => {
+			.then(data => {	
 				return data;
 			});
 	}

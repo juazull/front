@@ -37,14 +37,15 @@
 							<li v-for="posteo in posteos" :key="posteo.id">
 								<div class="card p-3 py-6">
 									<div class="card-header">
-										<img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/1336.png" alt="Foto de "/>
-										<h5 class="card-title">Juan ...</h5>
+										<img src="https://dbdzm869oupei.cloudfront.net/img/sticker/preview/1336.png" alt="Foto de " width="35" align="left"/>
+										<h5 class="card-title" style="padding-left:50px; padding-top:5px">Juan ...</h5>
 									</div>
 									<div class="card-body">
-										<h5 class="card-title"><a v-bind:href="'#/posteo/'+posteo.id_posteo">{{posteo.titulo_posteo}}</a></h5>
-
+										<h5 class="card-title">
+											<a v-bind:href="'#/posteo/'+posteo.id_posteo">{{posteo.titulo_posteo}}</a>
+										</h5>
 										<p>{{posteo.texto_posteo}}</p>
-										<div class="activity__list__footer">
+										<div class="activity_list_footer">
 											<a href="#">Likes {{posteo.likes}}</a> <a href="#">Comentarios</a> <span>{{posteo.fecha}}</span>
 										</div>
 									</div>
