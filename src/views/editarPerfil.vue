@@ -27,6 +27,12 @@
 									<label for="edad">Edad</label>
 									<input v-model.number="perfil.edad_Usuario" type="number" min="1" id="edad" class="form-control">
 								</div>
+
+								<div class="form-group">
+									<label for="fecha_nacimiento">Fecha de Nacimiento</label>
+									<input v-model="perfil.fecha_nacimiento" type="date" id="fecha_nacimiento" class="form-control">
+								</div>
+
 								<div class="form-group">
 									<label for="paises">Pais</label>
 									<select id="paises" v-model="perfil.pais_usuario" class="form-control">
@@ -59,7 +65,8 @@ export default {
 				nombre_usuario: null,
 				apellido_usuario: null,
 				pais_usuario: 2,
-				edad_Usuario: null
+				edad_Usuario: null,
+				fecha_nacimiento: null
 			},
 			auth: {
 				user: {
@@ -72,7 +79,8 @@ export default {
 				nombre_usuario: null,
 				apellido_usuario: null,
 				pais_usuario: null,
-				edad_usuario: null
+				edad_usuario: null,
+				fecha_nacimiento: null
 			},
 			paises: [],
 			loading: false,
@@ -110,7 +118,7 @@ export default {
 			if(this.loading) return;
 // 			if(!this.validates()) return;
 			this.loading = true;
-			perfiles.ediarPerfil(this.auth.user.id, this.perfil.nombre_usuario, this.perfil.apellido_usuario, this.perfil.pais_usuario, this.perfil.edad_Usuario). then (rta => {
+			perfiles.ediarPerfil(this.auth.user.id, this.perfil.nombre_usuario, this.perfil.apellido_usuario, this.perfil.pais_usuario, this.perfil.edad_Usuario, this.perfil.fecha_nacimiento). then (rta => {
 				this.loading = false;
 				if(rta.data){
 					this.$router.push('/perfil');
