@@ -75,6 +75,7 @@ export default {
             // TODO: Hacer que el logout realmente elimine la cookie.
             // TODO: Hacer que tanto front como back verifiquen que el usuario esté autenticado.
             authService.logout();
+            
             this.auth.user = {
                 id: null,
                 email: null,
@@ -83,7 +84,9 @@ export default {
             this.$router.push('/login');
         }
     },
-	mounted() {
+	mounted(){
+        this.logUser();
+
 		if(this.auth.user.id === null){
 			this.$router.push('/login');
 		}

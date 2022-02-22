@@ -66,7 +66,6 @@ import posteos from "../functions/publicaciones.js";
 import authService from "../services/auth.js";
 import {API_IMGS_FOLDER} from "../constants/api.js";
 
-
 export default {
     name: 'posteo',
     data(){
@@ -85,7 +84,7 @@ export default {
 				imagen_posteo: null,
 				texto_posteo: null,
 				usuario_posteo: null,
-        nombre_usuario_posteo:null,
+				nombre_usuario_posteo: null,
 				fecha: null,
 				contador_likes: 0
 			},
@@ -122,7 +121,8 @@ export default {
             comentarios.crearComentario(this.comentario). then (rta => {
                 this.loading = false;
                 if(rta.success){
-					this.$router.push('/');
+					//this.$router.push('/posteo/' + this.posteo.id_posteo);
+					this.loadComentarios();
                 }
             })
         },
@@ -155,9 +155,11 @@ export default {
     },
 	mounted() {
 		this.logUser();
+
 		if(this.auth.user.id === null){
 			this.$router.push('/login');
 		}
+
 		this.traerPosteo();
 		this.loadComentarios();
 		

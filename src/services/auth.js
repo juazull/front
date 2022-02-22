@@ -57,17 +57,18 @@ const authService = {
 	 *
 	 */
 	logout() {
-		return apiFetch("/cerrar-sesion", {
-      method: "post",
-    }).then((res) => {
-      userData = {
-        id: null,
-        usuario: null,
-        email: null,
-      };
-      localStorage.removeItem("userData");
-      return true;
-    });
+		return apiFetch("/cerrar-sesion", { method: "post" })
+			.then(res => {
+				userData = {
+					id: null,
+					usuario: null,
+					email: null,
+				};
+
+				localStorage.removeItem("userData");
+
+				return true;
+			})
 	}, 
 
 	/**
@@ -77,16 +78,12 @@ const authService = {
 	getUserData() {
 		return {
 			...userData
-			
-			// id: userData.id
-			// usuario: userData.usuario
-			// email: userData.email
 		};
 	},
 };
 
 // Leemos localStorage para ver si el usuario está autenticado o no.
-if (localStorage.getItem('userData') !== null) {
+if(localStorage.getItem('userData') !== null){
 	userData = JSON.parse(localStorage.getItem('userData'));
 }
 

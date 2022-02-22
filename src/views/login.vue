@@ -107,7 +107,19 @@ export default {
             }
 			return this.showError
 
+		},
+
+		logUser(){
+			this.user = authService.getUserData();
 		}
-    }
+    },
+
+	mounted(){
+		this.logUser();
+		
+		if(this.user.id !== null){
+			this.$router.push('/perfil');
+		}
+	}
 };
 </script>
